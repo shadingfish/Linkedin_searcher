@@ -10,6 +10,9 @@ google-search-results = "*"
 requests = "*"
 black = "*"
 tweepy = "*"
+flask = "*"
+langchain-community = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
