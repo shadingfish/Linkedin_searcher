@@ -12,7 +12,6 @@ def lookup(name: str) -> str:
     template = """given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page. 
     Your answer should contain only a URL """
 
-
     tools_for_agent = [
         Tool(
             name="Crawl Google 4 linkedin profile page",
@@ -31,7 +30,5 @@ def lookup(name: str) -> str:
         template=template, input_variables=["name_of_person"]
     )
 
-
     linkedin_profile_url = agent.run(prompt_template.format(name_of_person=name))
     return linkedin_profile_url
-
