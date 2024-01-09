@@ -8,7 +8,7 @@ from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 if __name__ == "__main__":
     print("Hello LangChain!")
 
-    linkedin_profile_url = linkedin_lookup_agent(name='Eden Marco Udemy')
+    linkedin_profile_url = linkedin_lookup_agent(name="Eden Marco Udemy")
 
     summary_template = """
         given the information {information} about a person from I want you to create:
@@ -24,8 +24,6 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    linkedin_data = scrape_linkedin_profile(
-        linkedin_profile_url=linkedin_profile_url
-    )
+    linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url)
 
     print(chain.run(information=linkedin_data))
