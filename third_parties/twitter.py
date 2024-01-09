@@ -17,7 +17,6 @@ auth.set_access_token(
 api = tweepy.API(auth)
 
 
-
 def scrape_user_tweets(username, num_tweets=20):
     """
     Scrapes a Twitter user's original tweets (i.e., not retweets or replies) and returns them as a list of dictionaries.
