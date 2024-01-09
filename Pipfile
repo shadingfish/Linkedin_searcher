@@ -1,5 +1,4 @@
 [[source]]
-
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pip_conf_index_global"
@@ -10,10 +9,10 @@ openai = "==0.28.1"
 google-search-results = "*"
 requests = "*"
 black = "*"
+tweepy = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
 python_full_version = "3.9.13"
-

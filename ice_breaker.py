@@ -1,15 +1,14 @@
-from langchain import PromptTemplate
+from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 
 
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 from third_parties.linkedin import scrape_linkedin_profile
+from third_parties.twitter import scrape_user_tweets
 
 
-if __name__ == "__main__":
-    print("Hello LangChain!")
-
+def ice_break(name: str) -> str:
     linkedin_profile_url = linkedin_lookup_agent(name="Eden Marco Udemy")
 
     summary_template = """
@@ -28,4 +27,13 @@ if __name__ == "__main__":
 
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url)
 
-    print(chain.run(information=linkedin_data))
+    result = chain.run(information=linkedin_data)
+    print(result)
+    return result
+    # tweets = scrape_user_tweets(username="@elonmusk", num_tweets=100)
+    # print(tweets)
+
+
+if __name__ == "__main__":
+    print("Hello LangChain!")
+    ice_break(name="Harrison Chase")
