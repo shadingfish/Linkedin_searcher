@@ -4,17 +4,12 @@ import logging
 
 import tweepy
 
-print(os.environ.get("SERPAPI_API_KEY"))
-print(os.environ.get("TWITTER_API_KEY"))
-print(os.environ.get("TWITTER_API_SECRET"))
-print(os.environ.get("TWITTER_ACCESS_TOKEN"))
-print(os.environ.get("TWITTER_ACCESS_SECRET"))
-
 logger = logging.getLogger("twitter")
 
 auth = tweepy.OAuthHandler(
     os.environ.get("TWITTER_API_KEY"), os.environ.get("TWITTER_API_SECRET")
 )
+
 
 auth.set_access_token(
     os.environ.get("TWITTER_ACCESS_TOKEN"), os.environ.get("TWITTER_ACCESS_SECRET")
@@ -22,7 +17,8 @@ auth.set_access_token(
 api = tweepy.API(auth)
 
 
-def scrape_user_tweets(username, num_tweets=5):
+
+def scrape_user_tweets(username, num_tweets=20):
     """
     Scrapes a Twitter user's original tweets (i.e., not retweets or replies) and returns them as a list of dictionaries.
     Each dictionary has three fields: "time_posted" (relative to now), "text", and "url".
