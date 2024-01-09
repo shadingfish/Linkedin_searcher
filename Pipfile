@@ -1,5 +1,6 @@
 [[source]]
-url = "https://pypi.org/simple/"
+
+url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pip_conf_index_global"
 
@@ -7,9 +8,12 @@ name = "pip_conf_index_global"
 langchain = "*"
 openai = "==0.28.1"
 google-search-results = "*"
+requests = "*"
+black = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
 python_full_version = "3.9.13"
+
