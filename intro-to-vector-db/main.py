@@ -1,10 +1,12 @@
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings, OpenAI
 from langchain_community.vectorstores import Pinecone
+from langchain.chains import RetrievalQA
 import os
 import pinecone
 
+print("Initializing vector...")
 pinecone.init(api_key=os.environ.get("PINECONE_API_KEY"), environment="gcp-starter")
 
 if __name__ == "__main__":
@@ -19,5 +21,19 @@ if __name__ == "__main__":
 
     print(len(texts))
 
+    print("Create embeddings...")
     embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
-    docsearch = Pinecone.from_documents(texts, embeddings, index="en_core_web_sm")
+    print("Saving vectors...")
+    docsearch = Pinecone.from_documents(
+        texts, embeddings, index_name="medium-blogs-embeddings-index"
+    )
+
+    qa = RetrievalQA.from_chain_type(
+        llm=OpenAI(),
+        chain_type="stuff",
+        retriever=docsearch.as_retriever(),
+        return_source_documents=True,
+    )
+    query = "What is a vector DB? Give me a 15 word answer for a beginner"
+    result = qa({"query": query})
+    print(result)

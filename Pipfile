@@ -5,7 +5,7 @@ name = "pip_conf_index_global"
 
 [packages]
 langchain = "*"
-openai = "==0.28.1"
+openai = "*"
 google-search-results = "*"
 requests = "*"
 black = "*"
@@ -14,6 +14,10 @@ flask = "*"
 langchain-community = "*"
 python-dotenv = "*"
 pinecone-client = "*"
+tiktoken = "*"
+langchain-openai = "*"
+pypdf = "*"
+faiss-cpu = "*"
 
 [dev-packages]
 
