@@ -13,6 +13,7 @@ tweepy = "*"
 flask = "*"
 langchain-community = "*"
 python-dotenv = "*"
+pinecone-client = "*"
 
 [dev-packages]
 
